@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bienvenido</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e9ecef;
+        }
+
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>¡Bienvenido!</h1>
+        <p>Hola, <span th:text="${nombre}">Nombre</span> <span th:text="${apellido}">Apellido</span>.</p>
+        <p>Has iniciado sesión correctamente.</p>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="logout-btn" style="border:none; cursor:pointer;">Cerrar Sesión</button>
+        </form>
+    </div>
+</body>
+
+</html>

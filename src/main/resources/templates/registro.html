@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Registro</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Crear Usuario</h2>
+        <div th:if="${error}" class="error" th:text="${error}"></div>
+        <form th:action="@{/registro}" th:object="${user}" method="post">
+            <input type="text" th:field="*{nombreuser}" placeholder="Nombre de Usuario" required />
+            <input type="password" th:field="*{password}" placeholder="Contraseña" required />
+            <input type="text" th:field="*{nombre}" placeholder="Nombre" required />
+            <input type="text" th:field="*{apellido}" placeholder="Apellido" required />
+            <input type="number" th:field="*{edad}" placeholder="Edad" required />
+            <input type="email" th:field="*{correo}" placeholder="Correo Electrónico" required />
+            <button type="submit">Registrarse</button>
+        </form>
+        <a th:href="@{/inicio}">Ya tengo cuenta</a>
+    </div>
+</body>
+
+</html>

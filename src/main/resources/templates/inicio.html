@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Inicio</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .msg {
+            color: green;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Iniciar Sesión</h2>
+        <div th:if="${param.error}" class="error">Usuario o contraseña incorrectos.</div>
+        <div th:if="${param.logout}" class="msg">Has cerrado sesión.</div>
+        <div th:if="${param.registered}" class="msg">Registro exitoso. Inicia sesión.</div>
+        <!-- Form action points to /inicio as configured in SecurityConfig -->
+        <form th:action="@{/inicio}" method="post">
+            <input type="text" name="username" placeholder="Usuario" required />
+            <input type="password" name="password" placeholder="Contraseña" required />
+            <button type="submit">Ingresar</button>
+        </form>
+        <a th:href="@{/registro}">Crear Usuario</a>
+    </div>
+</body>
+
+</html>
